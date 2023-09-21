@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "canisters": {
+    "p2p_ic_backend": {
+      "type": "rust",
+      "package": "p2p_ic_backend",
+      "candid": "src/p2p_ic_backend/p2p_ic_backend.did"
+    },
+    "p2p_ic_frontend": {
+      "type": "assets",
+      "source": [
+        "src/p2p_ic_frontend/assets"
+      ],
+      "dependencies": [
+        "p2p_ic_backend"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "output_env_file": ".env"
+}
