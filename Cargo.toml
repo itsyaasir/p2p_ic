@@ -1,4 +1,23 @@
 [workspace]
-members = [
-    "src/p2p_ic_backend",
-]
+members = ["src/p2p_ic"]
+
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+ic-canister = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-canister", tag = "v0.5.x" }
+ic-exports = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-exports", tag = "v0.5.x" }
+ic-helpers = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-helpers", tag = "v0.5.x" }
+ic-log = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-log", tag = "v0.5.x" }
+ic-metrics = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-metrics", tag = "v0.5.x", features = [
+    "export-api",
+] }
+ic-storage = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-storage", tag = "v0.5.x" }
+ic-stable-structures = "0.6.0-beta.1"
+ic-test-utils = { git = "https://github.com/bitfinity-network/canister-sdk", package = "ic-test-utils", tag = "v0.5.x" }
+
+candid = "0.9"
+ic-cdk = "0.11"
