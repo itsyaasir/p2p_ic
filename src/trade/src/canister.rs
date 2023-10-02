@@ -1,3 +1,7 @@
+use std::cell::RefCell;
+use std::ops::{Deref, DerefMut};
+use std::rc::Rc;
+
 use candid::{CandidType, Principal};
 use ic_canister::{init, update, Canister, MethodType, PreUpdate};
 
@@ -7,7 +11,7 @@ use crate::state::TradeState;
 pub struct TradeCanister {
     #[id]
     principal: Principal,
-    state: TradeState,
+    state: Rc<RefCell<TradeState>>,
 }
 
 impl PreUpdate for TradeCanister {
@@ -21,8 +25,14 @@ pub struct InitData {
 
 impl TradeCanister {
     #[init]
-    pub fn init(&mut self, init: InitData) {
-        self.state = TradeState::default();
+    pub fn init(&mut self, init: InitData) {}
+
+    pub fn state(&self) -> impl Deref<Target = TradeState> + '_ {
+        self.state.borrow()
+    }
+
+    pub fn state_mut(&self) -> impl DerefMut<Target = TradeState> + '_ {
+        self.state.borrow_mut()
     }
 
     #[update]

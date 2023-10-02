@@ -1,6 +1,9 @@
 use ic_canister::{generate_idl, Idl};
 mod canister;
+mod settings;
 mod state;
+mod encode;
+mod advertisement;
 
 pub fn idl() -> String {
     use crate::canister::InitData;
